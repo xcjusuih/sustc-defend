@@ -4,4 +4,3 @@
 
 
 
-This is a game in sustc
