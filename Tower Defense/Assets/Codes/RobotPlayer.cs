@@ -41,5 +41,49 @@ public class RobotPlayer : BaseRobot
         var moveDirection = v * forward + h * right;
         cc.Move(moveDirection.normalized * WalkSpeed * Time.deltaTime);
         animator.SetFloat("Speed", cc. velocity.magnitude / WalkSpeed);
+        //rotate
+        var r = GetAimPoint();
+        RotateToTarget(r);
+        //fire
+        if(Input.GetButton("Fire1"))
+        {
+            Shoot();
+        }
+
+        //ui
+        HUD.GetInstance().UpdateHpUI(hp);
+
+    }
+
+    public Vector3 GetAimPoint()
+    {
+        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit floorHit;
+        if (Physics.Raycast(camRay,out floorHit, 100.0f, LayerMask.GetMask("Floor")))
+        {
+            Vector3 playerToMouse = floorHit.point - transform.position;
+            playerToMouse.y = 0;
+            return playerToMouse;
+        }
+        return Vector3.zero;
+    }
+
+    public void RotateToTarget(Vector3 rot)
+    {
+        transform.LookAt(rot + transform.position);
+    }
+
+    public void Shoot(){
+        if (animator.GetCurrentAnimatorStateInfo(1).IsName("Idle"))
+        {
+            animator.SetBool("Shoot",true);
+        }
+    }
+
+    public override void OpenFire()
+    {
+        base.OpenFire();
+        //
+        Debug.Log("OpenFire");
     }
 }
