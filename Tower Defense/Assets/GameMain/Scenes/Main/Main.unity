@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -64,8 +64,7 @@ LightmapSettings:
     m_CompAOExponentDirect: 0
     m_ExtractAmbientOcclusion: 0
     m_Padding: 4
-    m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000,
-      type: 0}
+    m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
     m_FinalGather: 1
@@ -98,9 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: 5eda4f9705f51459b9621be5eedc4579,
-    type: 2}
-  m_UseShadowmask: 1
+  m_LightingDataAsset: {fileID: 112000002, guid: 5eda4f9705f51459b9621be5eedc4579, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: ad90ae3421f621c40aaa9d44a331e296, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -120,6 +118,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: a21963fe83082454f9b9b68f28bb86e9, type: 2}
@@ -164,8 +164,6 @@ GameObject:
   - component: {fileID: 46167514}
   - component: {fileID: 46167513}
   - component: {fileID: 46167512}
-  - component: {fileID: 46167511}
-  - component: {fileID: 46167510}
   m_Layer: 0
   m_Name: GameCamera
   m_TagString: MainCamera
@@ -173,51 +171,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &46167510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46167509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966d3ebce6b23684f94ee31eb41fce76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraControl: {fileID: 46167511}
-  nearZoomPanSpeedModifier: 0.5
-  screenPanThreshold: 40
-  mouseEdgePanSpeed: 30
-  mouseRmbPanSpeed: 15
---- !u!114 &46167511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46167509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa98b675a50cc644d9d36843f8f8cd0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookDampFactor: 0
-  movementDampFactor: 0
-  nearestZoom: 10
-  furthestZoom: 20
-  maxZoom: 60
-  zoomLogFactor: 10
-  zoomRecoverSpeed: 20
-  floorY: 0
-  zoomedCamAngle: {fileID: 44733054}
-  mapSize:
-    serializedVersion: 2
-    x: -10
-    y: -10
-    width: 20
-    height: 20
-  springyZoom: 0
 --- !u!124 &46167512
 Behaviour:
   m_ObjectHideFlags: 0
@@ -379,8 +332,7 @@ Transform:
 --- !u!1 &1511873281
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1554357318753422, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 1554357318753422, guid: d3314db5900624b4c80e558a5dd2be2a, type: 2}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -388,7 +340,7 @@ GameObject:
   - component: {fileID: 1511873282}
   - component: {fileID: 1511873284}
   - component: {fileID: 1511873283}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,8 +350,7 @@ GameObject:
 --- !u!4 &1511873282
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4351957979824268, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 4351957979824268, guid: d3314db5900624b4c80e558a5dd2be2a, type: 2}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511873281}
@@ -422,8 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6971fd7aa1a4445f98dce44cdf0c97c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementTilePrefab: {fileID: 2155307401497911774, guid: c707bc95ab948454ca1e378dce5e9358,
-    type: 3}
+  placementTilePrefab: {fileID: 2155307401497911774, guid: c707bc95ab948454ca1e378dce5e9358, type: 3}
   dimensions:
     x: 30
     y: 30
@@ -431,8 +381,7 @@ MonoBehaviour:
 --- !u!65 &1511873284
 BoxCollider:
   m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 65230414541838130, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 65230414541838130, guid: d3314db5900624b4c80e558a5dd2be2a, type: 2}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511873281}
@@ -445,8 +394,7 @@ BoxCollider:
 --- !u!1 &1538884662
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1973753804934358, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 1973753804934358, guid: d3314db5900624b4c80e558a5dd2be2a, type: 2}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -462,8 +410,7 @@ GameObject:
 --- !u!4 &1538884663
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4168422597816624, guid: d3314db5900624b4c80e558a5dd2be2a,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 4168422597816624, guid: d3314db5900624b4c80e558a5dd2be2a, type: 2}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538884662}
@@ -523,6 +470,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -547,6 +495,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1622951314
 MeshFilter:
   m_ObjectHideFlags: 0

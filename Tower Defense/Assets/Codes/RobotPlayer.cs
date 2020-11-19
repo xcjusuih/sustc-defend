@@ -27,6 +27,7 @@ public class RobotPlayer : BaseRobot
     {
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
+        CurWeapon = Weapons[CurWeaponIdx];
     }
 
     // Update is called once per frame
@@ -49,10 +50,42 @@ public class RobotPlayer : BaseRobot
         {
             Shoot();
         }
+        //switch weapon
+        float f = Input.GetAxis("Mouse ScrollWheel");
+        if(f > 0) {NextWeapon(1);}
+        else if (f<0){NextWeapon(-1);}
+
 
         //ui
         HUD.GetInstance().UpdateHpUI(hp);
+        HUD.GetInstance().UpdateWeaponUI(CurWeapon.icon, CurWeapon.bulletNum);
 
+    }
+
+    public void NextWeapon(int step)
+    {
+        var idx = (CurWeaponIdx + step + Weapons.Count) % Weapons.Count;
+        CurWeapon.gameObject.SetActive(false);
+        CurWeapon = Weapons[idx];
+        CurWeapon.gameObject.SetActive(true);
+        CurWeaponIdx = idx;
+    }
+
+    public void AddWeapon(GameObject weapon)
+    {
+        for (int i = 0; i < Weapons.Count;i++)
+        {
+            if (Weapons[i].gameObject.name == weapon.name)
+            {
+                Weapons[i].bulletNum += 10;
+                return;
+            }
+        }
+        var new_weapon = GameObject.Instantiate(weapon, Hand);
+        new_weapon.name = weapon.name;
+        new_weapon.transform.localRotation = CurWeapon.transform.localRotation;
+        Weapons.Add(new_weapon.GetComponent<WeaponBase>());
+        NextWeapon(Weapons.Count - 1 - CurWeaponIdx);
     }
 
     public Vector3 GetAimPoint()
@@ -84,6 +117,6 @@ public class RobotPlayer : BaseRobot
     {
         base.OpenFire();
         //
-        Debug.Log("OpenFire");
+        CurWeapon.OpenFire(transform.forward);
     }
 }

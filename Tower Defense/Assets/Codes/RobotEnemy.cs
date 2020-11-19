@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RobotEnemy : MonoBehaviour
+public class RobotEnemy : BaseRobot
 {
     // Start is called before the first frame update
     void Start()
