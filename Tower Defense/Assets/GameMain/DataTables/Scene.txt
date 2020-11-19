@@ -1,0 +1,6 @@
+﻿#	场景配置表			
+#	Id		AssetId	Procedure
+#	int		int	string
+#	场景编号	备注	资源Id	音乐id
+	1	启动场景	Menu	1
+	2	第一关	Main	2

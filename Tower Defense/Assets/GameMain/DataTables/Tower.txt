@@ -1,0 +1,5 @@
+﻿#	炮塔配置表												
+#	Id		NameId	Icon	PreviewEntityId	EntityId	ProjectileEntityId	ProjectileType	IsMultiAttack	MaxHP	Dimensions	Type	Levels
+#	int		string	string	int	int	int	string	bool	float	int[]	string	int[]
+#	配置编号	策划备注	炮塔名字Id	图标名称	预览实体编号	实体编号	炮弹实体编号	炮弹类型	是否同时攻击多个敌人	血量	占用面积	脚本类型	等级列表
+	101	突击加农炮	1001	50	50	EntityAssaultCannon
