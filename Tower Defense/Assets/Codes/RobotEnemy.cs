@@ -7,6 +7,7 @@ public class RobotEnemy : BaseRobot {
 	public GameObject target;
     private Transform monster; 
     public Vector3 destination; NavMeshAgent agent;
+	public GameObject[] items;
 	
 	void Start () {
 		// Cache agent component and destination
@@ -22,6 +23,7 @@ public class RobotEnemy : BaseRobot {
 	int move_speed = 7;
 	float time_limit = 1.0f;
 	float time_cnt = 0;
+	public float rate = 0.1f;
 	void Update () {
 		// Update destination if the target moves one unit
 		if(target){
@@ -38,7 +40,7 @@ public class RobotEnemy : BaseRobot {
 				time_cnt += Time.deltaTime;
 				if (time_cnt >= time_limit) {
 					target.GetComponent<RobotPlayer>().GetDamage(attack);
-					Debug.Log(string.Format("Attack !!! time=${0}", Time.time));
+					Debug.Log(string.Format("Attack !!! time=${0} {1}", Time.time,attack));
 					time_cnt = 0.0f;
 				}
 				agent.speed = 0;
@@ -56,8 +58,10 @@ public class RobotEnemy : BaseRobot {
         }
     }
 
+	public override void Die(){
+		Global.enemy_count--;
+		Destroy(this.gameObject);
+		GameObject.Instantiate(items[0],monster.position,Quaternion.identity);
+	}
 }
 
-public class Global{
-	public static int damageFactor = 1;
-}
