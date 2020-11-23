@@ -28,6 +28,7 @@ public class RobotPlayer : BaseRobot
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
         CurWeapon = Weapons[CurWeaponIdx];
+        hp = 100;
     }
 
     // Update is called once per frame
