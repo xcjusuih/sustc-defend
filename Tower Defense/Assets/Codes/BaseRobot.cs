@@ -9,7 +9,7 @@ public class BaseRobot : MonoBehaviour
     {
         return hp > 0;
     }
-    public void GetDamage(int dmg)
+    public virtual void GetDamage(int dmg)
     {
         hp -= dmg;
         if (!IsAlive())
